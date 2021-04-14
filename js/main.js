@@ -33,7 +33,7 @@ const getReceitasForDiet = (type) => {
                         type,
                         listRecipes: response.hits.map(h => ({
                             name: typeof h.recipe.label === 'string' ? h.recipe.label : null,
-                            imageUrl: typeof h.recipe.image === 'string' ? h.recipe.image : null,
+                            imageUrl: checkStatus(h.recipe.image) === 200 ? h.recipe.image : "../img/unnamed.jpg",
                             recipeSource: typeof h.recipe.url === 'string' ? h.recipe.url : null,
                             ingredient: typeof h.recipe.ingredientLines === 'string' ? h.recipe.ingredientLines : null,
                         })) || null,
@@ -75,18 +75,23 @@ const creatCaroucelElements = (groupRecipes) => {
         carousel.appendChild(carouselTitle);
 
         groupRecipes.listRecipes.forEach((recipe) => {
+
             if (recipe.imageUrl) {
                 var boxMovies = document.createElement('img');
                 var boxTitle = document.createElement('div');
+                var saibaMais = document.createElement('button');
                 boxRecipe = document.createElement('div');
                 boxRecipe.setAttribute('class', 'box-recipe');
+                saibaMais.setAttribute('class', 'btn-saibaMais');
                 boxTitle.setAttribute('class', 'box-title');
-                boxTitle.addEventListener('click',()=>window.location.href = recipe.recipeSource)
+                saibaMais.addEventListener('click', () => window.location.href = recipe.recipeSource)
+                saibaMais.innerText = 'Saiba Mais';
                 boxTitle.innerHTML = `<h3>${recipe.name}</h3>`;
-                boxMovies.className = 'box-movies';
+                boxMovies.className = 'box-image';
                 boxMovies.src = recipe.imageUrl;
                 boxRecipe.appendChild(boxMovies);
                 boxRecipe.appendChild(boxTitle);
+                boxRecipe.appendChild(saibaMais);
                 cardMovies.appendChild(boxRecipe);
             }
         });
@@ -116,5 +121,14 @@ const createCarousel = () => {
         }
     })
 }
-
+function checkStatus(imageUrl) 
+{
+   var http = jQuery.ajax(
+   {
+      type:"HEAD",
+      url: imageUrl,
+      async: false
+    })
+  return http.status;
+}
 init();
