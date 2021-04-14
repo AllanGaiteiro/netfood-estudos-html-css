@@ -1,0 +1,123 @@
+@import url(./variables.css);
+@import url(./nav-content.css);
+@import url(./header-content.css);
+@import url(./fontawesome/all.min.css);
+@import url(./owl/owl.carousel.min.css);
+@import url(./owl/owl.theme.default.min.css);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--preto);
+}
+.logo-site {
+    margin: auto 10px;
+    font-size: 40px;
+    font-family: "Arial Black", Times;
+    font-weight: 900;
+    color: var(--vermelho);
+    cursor: pointer;
+}
+
+
+/* buttons for actions*/
+/*
+.btn-action {
+    margin-left: 10px;
+    padding: 15px 30px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--font);
+    border: none;
+    font-family: "Arial Black", Times;
+}
+.btn-action span {
+    margin-left: 5px;
+}
+.btn-action:hover {
+    background-color: rgb(156, 136, 136);
+    color: var(--fontHover);
+    transition: 0.3s;
+}
+*/
+/* carrocel*/
+
+.content-movies h2 {
+    margin: 10px;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--font);
+}
+
+.box-movies {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: 1s all;
+    box-shadow: 4px 4px 4px black;
+}
+.box-movies:hover {
+    transform: scale(1.02, 1.02);
+    cursor: pointer;
+}
+
+.box-recipe {
+    position: relative;
+    text-align: center;
+}
+.box-title {
+    position: absolute;
+    z-index: 10;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    transition: 1s all;
+}
+.box-title {
+    display: flex;
+    font-size: 30px;
+    background-color: rgba(189, 189, 189, 0);
+    color: rgba(0, 0, 0, 0);
+    width: 100%;
+    padding-top: 80px;
+    align-items:center;
+    justify-content: center;
+    transition: 1s all;
+}
+.box-title:hover{
+    color: rgb(0, 0, 0);
+    background-color: rgba(114, 111, 111, 0.5);
+    padding-top: 50px;
+    cursor: pointer;
+}
+
+.footer{
+    display: flex;
+    padding: 60px 0px 40px 0px;
+    justify-content: space-between;
+    
+    
+}
+
+.contact{
+    justify-content: baseline;
+    text-align: left;
+    margin-right: 10px;
+}
+.contact a{
+    margin: 0px 0px;
+}
+.contact p{
+    margin: 10px 0px;
+}
+/*
+@media screen and (max-width: 450px) {
+    .btn-action {
+        width: 80%;
+        margin: 5px;
+    }
+}
+*/

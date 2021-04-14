@@ -1,0 +1,31 @@
+/* Navbar e seu elementos*/
+.container-navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    background-color: var(--preto);
+}
+
+.navbar {
+    display: flex;
+}
+.navbar a {
+    text-decoration: none;
+    margin: auto 10px;
+    color: var(--font);
+    font-family: "Arial Black", Times;
+}
+.navbar a:hover {
+    color: var(--vermelho);
+}
+
+@media screen and (max-width: 600px) {
+    .container-navbar {
+        display: block;
+        height: 80px;
+        text-align: center;
+    }
+    .navbar {
+        justify-content: center;
+    }
+}
