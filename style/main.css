@@ -22,30 +22,6 @@ body {
     cursor: pointer;
 }
 
-
-/* buttons for actions*/
-/*
-.btn-action {
-    margin-left: 10px;
-    padding: 15px 30px;
-    font-size: 12px;
-    cursor: pointer;
-    color: var(--font);
-    border: none;
-    font-family: "Arial Black", Times;
-}
-.btn-action span {
-    margin-left: 5px;
-}
-.btn-action:hover {
-    background-color: rgb(156, 136, 136);
-    color: var(--fontHover);
-    transition: 0.3s;
-}
-*/
-/* carrocel*/
-
-
 .box-recipe {
     text-align: center;
     padding: 2px 2px 20px 2px;
@@ -93,14 +69,7 @@ body {
     font-size: 2rem;
     margin: 10px;
 }
-/*
-@media screen and (max-width: 450px) {
-    .btn-action {
-        width: 80%;
-        margin: 5px;
-    }
-}
-*/
+
 .footer{
     display: flex;
     padding: 60px 0px 40px 0px;

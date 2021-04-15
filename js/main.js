@@ -70,8 +70,8 @@ const creatCaroucelElements = (groupRecipes) => {
 
         carousel.setAttribute('class', 'carousel-list');
         cardMovies.setAttribute('class', 'owl-carousel owl-theme');
-        cardMovies.setAttribute('id', groupRecipes.type);
-        carouselTitle.innerText = groupRecipes.type;
+        carouselTitle.setAttribute('id', groupRecipes.type);
+        carouselTitle.innerText = groupRecipes.type !== "Low-Carb" ? groupRecipes.type : "Low Carbohydrat"
         carousel.appendChild(carouselTitle);
 
         groupRecipes.listRecipes.forEach((recipe) => {
@@ -84,7 +84,7 @@ const creatCaroucelElements = (groupRecipes) => {
                 boxRecipe.setAttribute('class', 'box-recipe');
                 saibaMais.setAttribute('class', 'btn-saibaMais');
                 boxTitle.setAttribute('class', 'box-title');
-                saibaMais.addEventListener('click', () => window.location.href = recipe.recipeSource)
+                saibaMais.addEventListener('click', () => window.location.href = recipe.recipeSource);
                 saibaMais.innerText = 'Saiba Mais';
                 boxTitle.innerHTML = `<h3>${recipe.name}</h3>`;
                 boxMovies.className = 'box-image';
