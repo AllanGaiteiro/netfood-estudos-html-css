@@ -1,7 +1,12 @@
+:root{
+    --heightNav: 60px;
+    --padNavbarLi: 0px 30px;
+}
+
 /* Navbar e seu elementos*/
 .container-navbar {
     display: flex;
-    height: 60px;
+    height: var(--heightNav);
     background-color: var(--preto);
     justify-content: space-between;
 }
@@ -10,7 +15,7 @@
     display: flex;
 }
 .navbar ul li {
-    line-height: 60px;
+    line-height: var(--heightNav);
     text-decoration: none;
     text-align: center;
     color: var(--font);
@@ -20,7 +25,7 @@
     margin: auto;
     text-align: center;
     text-decoration: none;
-    padding: 0px 30px;
+    padding: var(--padNavbarLi);
     line-height: 60px;
     color: var(--font);
     font-family: "Arial Black", Times;
@@ -34,18 +39,16 @@ ul {
 }
 
 .dropbtn{
-    padding: 0px 30px;
+    padding: var(--padNavbarLi);
     text-decoration: none;
     color: var(--font);
 }
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
-    width: 100px;
-   
+    background-color: var(--preto);
+    width: 120px;
     font-size: 0.7rem;
-
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
@@ -59,7 +62,8 @@ ul {
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: #a8a4a4;
+    color: var(--vermelho);
 }
 
 .dropdown:hover .dropdown-content {

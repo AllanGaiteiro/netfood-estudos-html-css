@@ -25,16 +25,27 @@ body {
 .box-recipe {
     text-align: center;
     padding: 2px 2px 20px 2px;
+    margin: 10px 0px;
     height: 380px;
     box-shadow: 2px 4px 4px black;
     background-color: #e9e7e7;
-    border: 2px solid rgb(177, 176, 176);
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.233);
-    
+    border-radius: 15px;
 }
-.box-image:hover{
+.box-recipe:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.233);
+}
+.box-image {
+    width: 100%;
+    height: 250px;
+    background-origin: border-box;
+    background-size: 100%;
+    background-repeat: no-repeat;
     transition: 1s all;
-    transform:  scale(1.01,1.01);
+    border-radius: 15px 15px 0px 0px;
+}
+.box-image:hover {
+    background-size: 110%;
 }
 
 .box-title {
@@ -44,7 +55,7 @@ body {
     padding-top: 5px;
     transition: 1.2s all;
 }
-.btn-saibaMais{
+.btn-saibaMais {
     background-color: var(--vermelho);
     width: 80%;
     height: 40px;
@@ -53,42 +64,44 @@ body {
     border: navajowhite;
     border-radius: 4px;
     font-size: 1rem;
-
 }
-.btn-saibaMais:hover{
+.btn-saibaMais:hover {
     background-color: var(--vermelhoHover);
     cursor: pointer;
 }
-
-
-.carousel-list{
-    margin: 20px 10px;
-
+.carousel-intro {
+    margin: 40px auto;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--vermelho);
 }
-.carousel-list h2{
+
+.carousel-list {
+    margin: 20px 10px;
+}
+.carousel-list h2 {
     font-size: 2rem;
     margin: 10px;
 }
 
-.footer{
+.footer {
     display: flex;
     padding: 60px 0px 40px 0px;
     justify-content: space-between;
-    
 }
-.footer .logo-site{
+.footer .logo-site {
     margin: 0px 10px;
 }
 
-.contact{
+.contact {
     text-align: left;
     margin-right: 10px;
 }
-.contact a{
+.contact a {
     margin: 0px 0px;
     text-decoration: none;
     font-size: 18px;
 }
-.contact p{
+.contact p {
     margin: 10px 0px;
 }

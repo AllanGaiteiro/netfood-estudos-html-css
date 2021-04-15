@@ -77,7 +77,7 @@ const creatCaroucelElements = (groupRecipes) => {
         groupRecipes.listRecipes.forEach((recipe) => {
 
             if (recipe.imageUrl) {
-                var boxMovies = document.createElement('img');
+                var boxImage = document.createElement('div');
                 var boxTitle = document.createElement('div');
                 var saibaMais = document.createElement('button');
                 boxRecipe = document.createElement('div');
@@ -87,9 +87,9 @@ const creatCaroucelElements = (groupRecipes) => {
                 saibaMais.addEventListener('click', () => window.location.href = recipe.recipeSource);
                 saibaMais.innerText = 'Saiba Mais';
                 boxTitle.innerHTML = `<h3>${recipe.name}</h3>`;
-                boxMovies.className = 'box-image';
-                boxMovies.src = recipe.imageUrl;
-                boxRecipe.appendChild(boxMovies);
+                boxImage.className = 'box-image';
+                boxImage.style.backgroundImage = "url(\'"+recipe.imageUrl+"\')";
+                boxRecipe.appendChild(boxImage);
                 boxRecipe.appendChild(boxTitle);
                 boxRecipe.appendChild(saibaMais);
                 cardMovies.appendChild(boxRecipe);

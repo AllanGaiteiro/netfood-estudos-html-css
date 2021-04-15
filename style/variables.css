@@ -1,8 +1,13 @@
 :root {
     /* cores template */
-    --vermelho: #e92c36;
-    --vermelhoHover: #f51722cb;
-    --preto: #cecaca;
+    --vermelho: #fa593c;
+    --vermelhoHover: #fa593c;
+    --preto: #eceaea;
     --font: black;
     --fontHover:white;
+}
+@media screen and (max-width: 600px) {
+    :root{
+        --heightNav: 80px;
+    }
 }
