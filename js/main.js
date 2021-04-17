@@ -10,6 +10,7 @@ const edamanAPI = {
     id: "7ae6abb5",
     key: "122888c4e396c6c0cd749ab6b8292a48",
 };
+const proxy = 'https://cors-anywhere.herokuapp.com/';
 const arrayDiet = [
     "Balanced", "High-Protein", "Low-Carb", "Low-Fat"
 ];
@@ -19,39 +20,46 @@ const getReceitasForDiet = (type) => {
     if (typeof type === 'string') {
         let url = edamanAPI.url + "?q=&app_id=" + edamanAPI.id + "&app_key=" + edamanAPI.key + "&diet=" + type.toLowerCase();
 
-        const xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, true);
-        xhttp.onreadystatechange = () => {
-            if (xhttp.readyState == 4 && xhttp.status == 200) {
-                const response = JSON.parse(xhttp.responseText);
+        if (XMLHttpRequest) {
+            var request = new XMLHttpRequest();
+            if ("withCredentials" in request) {
+                request.open('GET', url, true);
+                request.onreadystatechange = () => {
+                    if (request.readyState == 4 && request.status == 200) {
+                        console.log(request.getAllResponseHeaders())
+                        const response = JSON.parse(request.responseText);
 
-                recipesData = {
-                    ...recipesData,
-                    [type.toLowerCase()]: {
-                        from: +response.from || null,
-                        to: +response.to || null,
-                        type,
-                        listRecipes: response.hits.map(h => ({
-                            name: typeof h.recipe.label === 'string' ? h.recipe.label : null,
-                            imageUrl: checkStatus(h.recipe.image) === 200 ? h.recipe.image : "../img/unnamed.jpg",
-                            recipeSource: typeof h.recipe.url === 'string' ? h.recipe.url : null,
-                            ingredient: typeof h.recipe.ingredientLines === 'string' ? h.recipe.ingredientLines : null,
-                        })) || null,
-                    },
+                        recipesData = {
+                            ...recipesData,
+                            [type.toLowerCase()]: {
+                                from: +response.from || null,
+                                to: +response.to || null,
+                                type,
+                                listRecipes: response.hits.map(h => {
+                                    return {
+                                        name: typeof h.recipe.label === 'string' ? h.recipe.label : null,
+                                        imageUrl: (h?.recipe?.image ?? "../img/unnamed.jpg") +'',
+                                        recipeSource: typeof h.recipe.url === 'string' ? h.recipe.url : null,
+                                        ingredient: typeof h.recipe.ingredientLines === 'string' ? h.recipe.ingredientLines : null,
+                                    };
+                                }) || null,
+                            },
+                        }
+
+
+                    };
+
+                    if (!!recipesData[type.toLowerCase()] && recipesData[type.toLowerCase()].listRecipes !== null) {
+                        creatCaroucelElements(recipesData[type.toLowerCase()]);
+                    }
+
                 };
-
-                if (!!recipesData[type.toLowerCase()] && recipesData[type.toLowerCase()].listRecipes !== null) {
-                    console.log(recipesData)
-                    creatCaroucelElements(recipesData[type.toLowerCase()]);
-                }
-
             }
+            request.send();
         }
-        xhttp.send();
     }
-
-
 }
+
 const getAllDiets = () => {
     arrayDiet.forEach(diet => getReceitasForDiet(diet))
 }
@@ -62,11 +70,11 @@ const creatCaroucelElements = (groupRecipes) => {
         var carousel = document.createElement('section');
         var carouselTitle = document.createElement('h2');
 
-        var cardMovies = document.createElement('div');
+        var cardCarousel = document.createElement('div');
         var boxRecipe;
 
         carousel.setAttribute('class', 'carousel-list');
-        cardMovies.setAttribute('class', 'owl-carousel owl-theme');
+        cardCarousel.setAttribute('class', 'owl-carousel owl-theme');
         carouselTitle.setAttribute('class', 'diet-title');
         carouselTitle.setAttribute('id', groupRecipes.type);
         carouselTitle.innerText = groupRecipes.type !== "Low-Carb" ? groupRecipes.type : "Low Carbohydrat"
@@ -89,10 +97,10 @@ const creatCaroucelElements = (groupRecipes) => {
                 boxRecipe.appendChild(boxImage);
                 boxRecipe.appendChild(boxTitle);
                 boxRecipe.appendChild(saibaMais);
-                cardMovies.appendChild(boxRecipe);
+                cardCarousel.appendChild(boxRecipe);
             }
         });
-        carousel.appendChild(cardMovies);
+        carousel.appendChild(cardCarousel);
         carouselList.appendChild(carousel);
 
     }
@@ -117,15 +125,6 @@ const createCarousel = () => {
             }
         }
     })
-}
-function checkStatus(imageUrl) {
-    var http = jQuery.ajax(
-        {
-            type: "HEAD",
-            url: imageUrl,
-            async: false
-        })
-    return http.status;
 }
 
 // menu Responsivo
