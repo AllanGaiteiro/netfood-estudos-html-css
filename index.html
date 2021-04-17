@@ -12,8 +12,9 @@
 <body>
     <header class="container-navbar">
         <span class="logo-site">NETFOOD</span>
+        <i id="menu-responsivo" class="fas fa-bars" onclick="menu()"></i>
         <nav class="navbar">
-            <ul>
+            <ul id="ulNavbar">
                 <li><a class="elemento-nav" href="./index.html">Home</a></li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Tipo</a>
@@ -24,7 +25,7 @@
                         <a class="types" href="#Low-Fat">Low Fat</a>
                     </div>
                 </li>
-                <li><a class="elemento-nav" href="#">About</a></li>
+                <li><a class="elemento-nav" href="#about">About</a></li>
             </ul>
         </nav>
     </header>
@@ -39,30 +40,43 @@
         </header>
         <section id="container-carousel">
             <h2 class="carousel-intro">Escolha Sua Dieta</h2>
-            
+
         </section>
 
 
     </main>
 
-    <footer class="footer">
+    <footer>
 
-        <span class="logo-site">NETFOOD</span>
-        <div class="contact">
-            <h2>Contate-me:</h2>
-            <p><i class="fab fa-whatsapp"></i> (19) 99933 3358</p>
-            <a href="https://github.com/AllanGaiteiro"><i class="fab fa-github"></i>AllanGaiteiro</a>
-        </div>
-        <div>
-            <h2>Foi Usado:</h2>
-            <ul style="margin: 20px 0px 10px 20px;margin-bottom: 20px;">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-            </ul>
-            <p>Created by Allan Gaiteiro</p>
+        <h1 class="logo-site">NETFOOD</h1>
+        <div id="about">
+            <div>
+                <h2>Objetivo</h2>
+                <p><i>
+                        Entregar um site de receitas, baseadas nas dietas em que o cliente deseja seguir. Nosso objetivo
+                        não é ensinar, mas sim direcionar para os sites das receitas específicas.
+                    </i> </p>
+            </div>
+            <div class="contact">
+                <h2>Contate-me:</h2>
+                <p><i class="fab fa-whatsapp"></i> (19) 99933 3358</p>
+                <a href="https://github.com/AllanGaiteiro"><i class="fab fa-github"></i>AllanGaiteiro</a>
+                <br>
 
+            </div>
+            <div>
+                <h2>Foi Usado:</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>fontawesome</li>
+                    <li>edamam API</li>
+                </ul>
+
+            </div>
         </div>
+        <h3>Created by Allan Gaiteiro</h3>
 
     </footer>
     <script src="./js/jquery.min.js"></script>

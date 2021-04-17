@@ -18,7 +18,7 @@ body {
     font-size: 40px;
     font-family: "Arial Black", Times;
     font-weight: 900;
-    color: var(--vermelho);
+    color: white;
     cursor: pointer;
 }
 
@@ -31,6 +31,7 @@ body {
     background-color: #e9e7e7;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.233);
     border-radius: 15px;
+    transition: 0.4 all;
 }
 .box-recipe:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.233);
@@ -45,7 +46,7 @@ body {
     border-radius: 15px 15px 0px 0px;
 }
 .box-image:hover {
-    background-size: 110%;
+    background-size: 104%;
 }
 
 .box-title {
@@ -77,22 +78,52 @@ body {
 }
 
 .carousel-list {
-    margin: 20px 10px;
+    position: relative;
+    margin: 80px 10px;
 }
 .carousel-list h2 {
     font-size: 2rem;
     margin: 10px;
 }
+.diet-title {
+    position: absolute;
+    top: -50px;
+    left: -280px;
+    z-index: 20;
+    background-color: var(--vermelho);
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    width: 350px;
+    padding: 20px 0px;
+    border-radius: 0px 10px 0px 10px;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.233);
+    transition: 1s all;
+    animation: 1s move-diet-title linear;
+    left: -60px;
+}
+.diet-title:hover {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.233);
+}
 
-.footer {
+footer .logo-site {
+    font-size: 4rem;
+}
+footer {
+    background-color: var(--vermelho);
+    text-align: center;
+    color: white;
+}
+#about {
     display: flex;
     padding: 60px 0px 40px 0px;
     justify-content: space-between;
 }
-.footer .logo-site {
+#about div{
+    width: 33%;
+    text-align: left;
     margin: 0px 10px;
 }
-
 .contact {
     text-align: left;
     margin-right: 10px;
@@ -100,8 +131,63 @@ body {
 .contact a {
     margin: 0px 0px;
     text-decoration: none;
+    color: white;
     font-size: 18px;
 }
 .contact p {
     margin: 10px 0px;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(3600deg);
+    }
+}
+
+@keyframes move-diet-title {
+    from {
+        left: -300px;
+    }
+    to {
+        left: -60px;
+    }
+}
+@media (max-width: 600px) {
+    .box-recipe{
+        padding: 0px;
+    }
+
+    .diet-title {
+        width: 100vw;
+        margin: 0px;
+        left: -30px;
+    }
+    .carousel-intro{
+        margin: 40px 0px;
+    }
+    .container-carousel{
+        margin: 0px;
+        padding: 0px;
+    }
+    #about {
+        display: block;
+        text-align: center;
+        padding: 0px;
+    }
+    #about div{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .contact {
+        text-align: center;
+    }
+}
+
+@media (max-width: 400px) {
+    .diet-title {
+        transition: none;
+        border-radius: 0px;
+    }
 }

@@ -55,9 +55,6 @@ const getReceitasForDiet = (type) => {
 const getAllDiets = () => {
     arrayDiet.forEach(diet => getReceitasForDiet(diet))
 }
-const init = () => {
-    getAllDiets()
-}
 
 const creatCaroucelElements = (groupRecipes) => {
 
@@ -70,10 +67,10 @@ const creatCaroucelElements = (groupRecipes) => {
 
         carousel.setAttribute('class', 'carousel-list');
         cardMovies.setAttribute('class', 'owl-carousel owl-theme');
+        carouselTitle.setAttribute('class', 'diet-title');
         carouselTitle.setAttribute('id', groupRecipes.type);
         carouselTitle.innerText = groupRecipes.type !== "Low-Carb" ? groupRecipes.type : "Low Carbohydrat"
         carousel.appendChild(carouselTitle);
-
         groupRecipes.listRecipes.forEach((recipe) => {
 
             if (recipe.imageUrl) {
@@ -88,16 +85,16 @@ const creatCaroucelElements = (groupRecipes) => {
                 saibaMais.innerText = 'Saiba Mais';
                 boxTitle.innerHTML = `<h3>${recipe.name}</h3>`;
                 boxImage.className = 'box-image';
-                boxImage.style.backgroundImage = "url(\'"+recipe.imageUrl+"\')";
+                boxImage.style.backgroundImage = "url(\'" + recipe.imageUrl + "\')";
                 boxRecipe.appendChild(boxImage);
                 boxRecipe.appendChild(boxTitle);
                 boxRecipe.appendChild(saibaMais);
                 cardMovies.appendChild(boxRecipe);
             }
         });
-
         carousel.appendChild(cardMovies);
         carouselList.appendChild(carousel);
+
     }
     createCarousel();
 }
@@ -121,14 +118,24 @@ const createCarousel = () => {
         }
     })
 }
-function checkStatus(imageUrl) 
-{
-   var http = jQuery.ajax(
-   {
-      type:"HEAD",
-      url: imageUrl,
-      async: false
-    })
-  return http.status;
+function checkStatus(imageUrl) {
+    var http = jQuery.ajax(
+        {
+            type: "HEAD",
+            url: imageUrl,
+            async: false
+        })
+    return http.status;
 }
+
+// menu Responsivo
+const menu = () => {
+    var menuReponsivo = document.getElementById('ulNavbar');
+    menuReponsivo.style.display = menuReponsivo.style.display === 'block' ? 'none' : 'block';
+}
+const init = () => {
+    getAllDiets()
+}
+
 init();
+
